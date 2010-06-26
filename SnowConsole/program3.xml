@@ -1,0 +1,47 @@
+﻿<?xml version="1.0"?>
+<MemoryDump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://cleancode.ru/snow/memoryDumpSchema">
+  <CellsOffset>000</CellsOffset>
+  <Cells>
+    <!--основная программа-->
+    <Cell Address="020">FA00</Cell>
+    <Cell Address="021">F200</Cell>
+    <Cell Address="022">F800</Cell>
+    <Cell Address="023">F100</Cell>
+    <Cell Address="024">C022</Cell>
+    <Cell Address="025">0000</Cell>
+
+    <!--подпрограма обработки прерываний-->
+    <Cell Address="000">0000</Cell>
+    <Cell Address="001">C030</Cell>
+
+
+    <Cell Address="030">304B</Cell>
+    <Cell Address="031">F600</Cell>
+    <Cell Address="032">304C</Cell>
+    <Cell Address="033">E103</Cell>
+    <Cell Address="034">C036</Cell>
+    <Cell Address="035">C039</Cell>
+    <Cell Address="036">E101</Cell>
+    <Cell Address="037">C043</Cell>
+    <Cell Address="038">C03E</Cell>
+    <Cell Address="039">F200</Cell>
+    <Cell Address="03A">E203</Cell>
+    <Cell Address="03B">E003</Cell>
+    <Cell Address="03C">3025</Cell>
+    <Cell Address="03D">C044</Cell>
+    <Cell Address="03E">F200</Cell>
+    <Cell Address="03F">404B</Cell>
+    <Cell Address="040">E301</Cell>
+    <Cell Address="041">E001</Cell>
+    <Cell Address="042">C044</Cell>
+    <Cell Address="043">E002</Cell>
+    <Cell Address="044">F200</Cell>
+    <Cell Address="045">404C</Cell>
+    <Cell Address="046">F700</Cell>
+    <Cell Address="047">F200</Cell>
+    <Cell Address="048">404B</Cell>
+    <Cell Address="049">FA00</Cell>
+    <Cell Address="04A">C800</Cell>
+    <Cell Address="04B">0000</Cell>
+  </Cells>
+</MemoryDump>

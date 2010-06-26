@@ -1,0 +1,26 @@
+﻿<?xml version="1.0"?>
+<MemoryDump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://cleancode.ru/snow/memoryDumpSchema">
+  <CellsOffset>000</CellsOffset>
+  <Cells>
+    <Cell Address="00B">001A</Cell>
+    <Cell Address="011">FFFD</Cell>
+    <Cell Address="012">F200</Cell>
+    <Cell Address="013">480B</Cell>
+    <Cell Address="014">9016</Cell>
+    <Cell Address="015">2045</Cell>
+    <Cell Address="016">0011</Cell>
+    <Cell Address="017">C012</Cell>
+    <Cell Address="018">F000</Cell>
+    
+    <Cell Address="019">0000</Cell>
+    <Cell Address="01A">CF01</Cell>
+    <Cell Address="01B">B0BA</Cell>
+    <Cell Address="01C">5B1B</Cell>
+
+    <Cell Address="046">F200</Cell>
+    <Cell Address="047">F800</Cell>
+    <Cell Address="048">4019</Cell>
+    <Cell Address="049">3019</Cell>
+    <Cell Address="04A">C845</Cell>
+  </Cells>
+</MemoryDump> 
