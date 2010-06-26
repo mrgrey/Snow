@@ -3,6 +3,8 @@ using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Cleancode.Snow;
+using Cleancode.Snow.Misc;
 
 namespace SnowTests
 {
@@ -60,11 +62,11 @@ namespace SnowTests
         #endregion
 
         [TestMethod]
-        public void TestMethod1()
+        public void TestJoinNotEmptyStrings()
         {
-            //
-            // TODO: Add test logic	here
-            //
+            var strings = new string[]{"first", "second", "third", "", "fifth"};
+            var result = Helper.JoinNotEmptyStrings(strings);
+            Assert.AreEqual<string>("first, second, third, fifth", result);
         }
     }
 }

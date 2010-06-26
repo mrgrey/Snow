@@ -44,6 +44,12 @@
   <ItemGroup>
     <Content Include="AuthoringTests.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cleancode.Snow\Cleancode.Snow.csproj">
+      <Project>{EADD7137-02E3-4C78-B709-1060C6C423DC}</Project>
+      <Name>Cleancode.Snow</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
