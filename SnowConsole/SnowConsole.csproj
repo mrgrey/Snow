@@ -50,14 +50,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="ActionsSelector\ActionInfo.cs" />
     <Compile Include="ActionsSelector\ActionAtribute.cs" />
     <Compile Include="ActionsSelector\ActionInternalException.cs" />
@@ -109,6 +101,10 @@
       <Project>{EADD7137-02E3-4C78-B709-1060C6C423DC}</Project>
       <Name>Cleancode.Snow</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Diagrams\" />
