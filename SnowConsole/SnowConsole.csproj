@@ -1,14 +1,35 @@
-﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.50727</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{FD802E59-5F2A-416A-B2C3-81113B6EA005}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Cleancode.Snow</RootNamespace>
     <AssemblyName>SnowConsole</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,6 +51,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -39,49 +63,12 @@
     <Compile Include="ActionsSelector\ActionInternalException.cs" />
     <Compile Include="ActionsSelector\HelpActionsContainer.cs" />
     <Compile Include="ActionsSelector\UnsupportedActionException.cs" />
-    <Compile Include="IO\IODevice.cs" />
     <Compile Include="MainActionsContainer.cs" />
     <Compile Include="ActionsSelector\ActionsContainerAttribute.cs" />
     <Compile Include="ActionsSelector\ActionSelector.cs" />
-    <Compile Include="ALU\AluInputInvertMode.cs" />
-    <Compile Include="ALU\AluLeftInputSource.cs" />
-    <Compile Include="ALU\AluOperationType.cs" />
-    <Compile Include="ALU\AluOutputAcceptor.cs" />
-    <Compile Include="ALU\AluRightInputSource.cs" />
-    <Compile Include="Core\Machine.cs" />
-    <Compile Include="Memory\memoryDumpSchema.cs">
-      <DependentUpon>memoryDumpSchema.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Memory\MemoryCell.cs" />
-    <Compile Include="Memory\DataCellType.cs" />
-    <Compile Include="Memory\RAM.cs" />
-    <Compile Include="Memory\DataCell.cs" />
-    <Compile Include="Memory\StateRegister.cs" />
-    <Compile Include="Microcommands\ControlMCArgumentSource.cs" />
-    <Compile Include="Microcommands\ControlMicroCommand.cs" />
-    <Compile Include="IO\IOOperations.cs" />
-    <Compile Include="Microcommands\MemoryOperationType.cs" />
-    <Compile Include="Microcommands\MicroCommand.cs" />
-    <Compile Include="Microcommands\MicroCommandType.cs" />
-    <Compile Include="Misc\Helper.cs" />
-    <Compile Include="Microcommands\NZRegistersValueOperationType.cs" />
-    <Compile Include="Microcommands\OperationalMicrocommand0.cs" />
-    <Compile Include="Microcommands\OperationalMicrocommand1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Microcommands\RotateAccumulatorMode.cs" />
-    <Compile Include="Microcommands\ShiftRegisterValueOperationType.cs" />
-    <Compile Include="Memory\Register.cs" />
-    <Compile Include="Core\RegistersTypes.cs" />
     <Compile Include="ActionsSelector\ActionsTreeNode.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Memory\memoryDumpSchema.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Memory\memoryDumpSchema.xsx">
-      <DependentUpon>memoryDumpSchema.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="microprogram.xml">
@@ -99,6 +86,29 @@
     <Content Include="program3.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cleancode.Snow\Cleancode.Snow.csproj">
+      <Project>{EADD7137-02E3-4C78-B709-1060C6C423DC}</Project>
+      <Name>Cleancode.Snow</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Diagrams\" />

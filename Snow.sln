@@ -1,9 +1,11 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual Studio 2005
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnowConsole", "SnowConsole\SnowConsole.csproj", "{FD802E59-5F2A-416A-B2C3-81113B6EA005}"
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SnowConsoleInstaller", "SnowConsoleInstaller\SnowConsoleInstaller.vdproj", "{D434F192-5472-4899-9F0F-5F78652D5DD6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cleancode.Snow", "Cleancode.Snow\Cleancode.Snow.csproj", "{EADD7137-02E3-4C78-B709-1060C6C423DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,6 +19,10 @@ Global
 		{FD802E59-5F2A-416A-B2C3-81113B6EA005}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D434F192-5472-4899-9F0F-5F78652D5DD6}.Debug|Any CPU.ActiveCfg = Debug
 		{D434F192-5472-4899-9F0F-5F78652D5DD6}.Release|Any CPU.ActiveCfg = Release
+		{EADD7137-02E3-4C78-B709-1060C6C423DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EADD7137-02E3-4C78-B709-1060C6C423DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EADD7137-02E3-4C78-B709-1060C6C423DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EADD7137-02E3-4C78-B709-1060C6C423DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

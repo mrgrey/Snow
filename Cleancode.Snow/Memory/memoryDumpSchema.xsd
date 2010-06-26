@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://cleancode.ru/snow/memoryDumpSchema" targetNamespace="http://cleancode.ru/snow/memoryDumpSchema">
+  <xs:element name="MemoryDump">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="CellsOffset" type="DumpMemAddress" />
+        <xs:element name="Cells">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="Cell" type="DumpMemoryCell" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="DumpMemoryCell">
+    <xs:simpleContent>
+      <xs:extension base="DumpCellValue">
+        <xs:attribute name="Address" type="DumpMemAddress"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:simpleType name="DumpCellValue">
+    <xs:restriction base="xs:string">
+      <xs:length value="4" fixed="true"/>
+      <xs:pattern value="[0-9A-F]{4,}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="DumpMemAddress">
+    <xs:restriction base="xs:string">
+      <xs:length value="3" fixed="true"/>
+      <xs:pattern value="[0-9A-F]{3,}"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
