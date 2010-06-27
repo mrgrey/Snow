@@ -157,7 +157,7 @@ namespace Cleancode.Snow
             //разделяем переданную строку(команду с аргументами) на компоненты по пробелу
 
             string[] commandParts = command.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            //поиск по дереву команд будет вестить, естественно, начиная с его корня
+            //поиск по дереву команд будет вестиcь, естественно, начиная с его корня
             ActionsTreeNode currentNode = _searchTreeRoot;
             //количество параметров\аргументов команды
             int paramsCount = commandParts.Length;
