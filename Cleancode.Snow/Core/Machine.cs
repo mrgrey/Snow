@@ -20,9 +20,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Cleancode.Snow;
 using Cleancode.Snow.Memory;
+
 
 namespace Cleancode.Snow.Core
 {
@@ -32,6 +34,7 @@ namespace Cleancode.Snow.Core
         /// Основная память машины
         /// </summary>
         public readonly Memory.RAM MainMemory;
+
         /// <summary>
         /// Память микрокоманд
         /// </summary>
@@ -40,64 +43,115 @@ namespace Cleancode.Snow.Core
         /// <summary>
         /// Регистр данных
         /// </summary>
-        public readonly Memory.Register Data;
+        public Memory.Register Data
+        {
+            get { return Registers[RegisterTypes.Data]; }
+        }
         /// <summary>
         /// Регистр команд
         /// </summary>
-        public readonly Memory.Register Command;
+        public Memory.Register Command
+        {
+            get { return Registers[RegisterTypes.Command]; }
+        }
         /// <summary>
         /// Счетчик команд
         /// </summary>
-        public readonly Memory.Register CommandCounter;
+        public Memory.Register CommandCounter
+        {
+            get { return Registers[RegisterTypes.CommandCounter]; }
+        }
         /// <summary>
         /// Аккмулятор
         /// </summary>
-        public readonly Memory.Register Accumulator;
+        public Memory.Register Accumulator
+        {
+            get { return Registers[RegisterTypes.Accumulator]; }
+        }
         /// <summary>
         /// Регистр состояний
         /// </summary>
-        public readonly Memory.Register State;
+        public Memory.Register State
+        {
+            get { return Registers[RegisterTypes.State]; }
+        }
         /// <summary>
         /// Клавиатурный регистр
         /// </summary>
-        public readonly Memory.Register Keyboard;
+        public Memory.Register Keyboard
+        {
+            get { return Registers[RegisterTypes.Keyboard]; }
+        }
         /// <summary>
         /// Регистр адреса
         /// </summary>
-        public readonly Memory.Register Address;
+        public Memory.Register Address
+        {
+            get { return Registers[RegisterTypes.Address]; }
+        }
         /// <summary>
         /// Регистр переноса
         /// </summary>
-        public readonly Memory.Register Carry;
+        public Memory.Register Carry
+        {
+            get { return Registers[RegisterTypes.Carry]; }
+        }
 
         /// <summary>
         /// Левый вход АЛУ
         /// </summary>
-        public readonly Memory.Register AluLeftInput;
+        public Memory.Register AluLeftInput
+        {
+            get { return Registers[RegisterTypes.AluLeftInput]; }
+        }
         /// <summary>
         /// Правый вход АЛУ
         /// </summary>
-        public readonly Memory.Register AluRightInput;
+        public Memory.Register AluRightInput
+        {
+            get { return Registers[RegisterTypes.AluRightInput]; }
+        }
         /// <summary>
         /// Буферный регистр (выход АЛУ)
         /// </summary>
-        public readonly Memory.Register BufferRegister;
+        public Memory.Register BufferRegister
+        {
+            get { return Registers[RegisterTypes.BufferRegister]; }
+        }
         /// <summary>
         /// Буферный регистр переноса (выход АЛУ)
         /// </summary>
-        public readonly Memory.Register CarryBufferRegister;
+        public Memory.Register CarryBufferRegister
+        {
+            get { return Registers[RegisterTypes.CarryBufferRegister]; }
+        }
 
         /// <summary>
         /// Счетчик микрокоманд
         /// </summary>
-        public readonly Memory.Register MicrocommandsCounter;
+        public Memory.Register MicrocommandsCounter
+        {
+            get { return Registers[RegisterTypes.MicrocommandsCounter]; }
+        }
         /// <summary>
         /// Текущая микрокоманда
         /// </summary>
-        public readonly Memory.Register Microcommand;
+        public Memory.Register Microcommand
+        {
+            get { return Registers[RegisterTypes.Microcommand]; }
+        }
 
-        public readonly Dictionary<RegisterTypes, Memory.Register> Registers;
+        private Dictionary<RegisterTypes, Memory.Register> registers;
 
+        public IDictionary<RegisterTypes, Memory.Register> Registers
+        {
+            get
+            {
+                return new Cleancode.Snow.Misc.ReadOnlyDictionary<RegisterTypes, Memory.Register>(registers);
+            }
+        }
+
+        
         public readonly IO.IODevice[] IODevices;
 
         /// <summary>
@@ -124,24 +178,32 @@ namespace Cleancode.Snow.Core
             // Инициализируем память микрокоманд
             MicrocommandsMemory = new Cleancode.Snow.Memory.RAM(256);
 
-            // Инициализируем регистры, указывая в качестве ID элемент перечисления RegisterTypes
-            Data = new Memory.Register(16, RegisterTypes.Data);
-            Command = new Memory.Register(16, RegisterTypes.Command);
-            CommandCounter = new Memory.Register(11, RegisterTypes.CommandCounter);
-            Accumulator = new Memory.Register(16, RegisterTypes.Accumulator);
-            State = new Memory.Register(13, RegisterTypes.State);
-            Keyboard = new Memory.Register(16, RegisterTypes.Keyboard);
-            Address = new Memory.Register(12, RegisterTypes.Address);
-            Carry = new Memory.Register(1, RegisterTypes.Carry);
 
-            // Инициализируем внутренние регистры
-            AluLeftInput = new Memory.Register(16);
-            AluRightInput = new Memory.Register(16);
-            BufferRegister = new Memory.Register(16);
-            CarryBufferRegister = new Memory.Register(16);
+            var registersList = new Register[]{
+                // Инициализируем регистры, указывая в качестве ID элемент перечисления RegisterTypes
+                new Memory.Register(16, RegisterTypes.Data), 
+                new Memory.Register(16, RegisterTypes.Command),
+                new Memory.Register(11, RegisterTypes.CommandCounter),
+                new Memory.Register(16, RegisterTypes.Accumulator),
+                new Memory.Register(13, RegisterTypes.State),
+                new Memory.Register(16, RegisterTypes.Keyboard),
+                new Memory.Register(12, RegisterTypes.Address),
+                new Memory.Register(1, RegisterTypes.Carry),
 
-            MicrocommandsCounter = new Memory.Register(8);
-            Microcommand = new Memory.Register(16);
+                // Инициализируем внутренние регистры
+                new Memory.Register(16, RegisterTypes.AluLeftInput),
+                new Memory.Register(16, RegisterTypes.AluRightInput),
+                new Memory.Register(16, RegisterTypes.BufferRegister),
+                new Memory.Register(16, RegisterTypes.CarryBufferRegister),
+                new Memory.Register(8, RegisterTypes.MicrocommandsCounter),
+                new Memory.Register(16, RegisterTypes.Microcommand)
+            }.ToList();
+
+            this.registers = new Dictionary<RegisterTypes, Cleancode.Snow.Memory.Register>();
+
+            registersList.ForEach(
+                register => Registers.Add((RegisterTypes)register.Id, register)
+            );
 
             IODevices = new IO.IODevice[3];
             for (int e = 0; e < IODevices.Length; e++)
@@ -152,20 +214,7 @@ namespace Cleancode.Snow.Core
              * */
             State.Data |= 2;
 
-            Registers = new Dictionary<RegisterTypes, Cleancode.Snow.Memory.Register>();
-
-            Registers.Add(RegisterTypes.Accumulator, Accumulator);
-            Registers.Add(RegisterTypes.Address, Address);
-            Registers.Add(RegisterTypes.BufferRegister, BufferRegister);
-            Registers.Add(RegisterTypes.Carry, Carry);
-            Registers.Add(RegisterTypes.CarryBufferRegister, CarryBufferRegister);
-            Registers.Add(RegisterTypes.Command, Command);
-            Registers.Add(RegisterTypes.CommandCounter, CommandCounter);
-            Registers.Add(RegisterTypes.Data, Data);
-            Registers.Add(RegisterTypes.Keyboard, Keyboard);
-            Registers.Add(RegisterTypes.Microcommand, Microcommand);
-            Registers.Add(RegisterTypes.MircocommandsCounter, MicrocommandsCounter);
-            Registers.Add(RegisterTypes.State, State);
+            
 
             MicrocommandsCounter.Data = 1;
         }

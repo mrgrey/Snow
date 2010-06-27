@@ -74,6 +74,7 @@
     <Compile Include="Microcommands\RotateAccumulatorMode.cs" />
     <Compile Include="Microcommands\ShiftRegisterValueOperationType.cs" />
     <Compile Include="Misc\Helper.cs" />
+    <Compile Include="Misc\ReadOnlyDictionary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

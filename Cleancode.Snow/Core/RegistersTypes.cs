@@ -76,6 +76,8 @@ namespace Cleancode.Snow
         /// <summary>
         /// Счетчик микрокоманд
         /// </summary>
-        MircocommandsCounter,
+        MicrocommandsCounter,
+        AluLeftInput,
+        AluRightInput
     }
 }

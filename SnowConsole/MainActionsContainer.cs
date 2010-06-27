@@ -62,7 +62,7 @@ namespace Cleancode.Snow
             _registerTypesMapping.Add("data", RegisterTypes.Data);
             _registerTypesMapping.Add("kbd", RegisterTypes.Keyboard);
             _registerTypesMapping.Add("mcmd", RegisterTypes.Microcommand);
-            _registerTypesMapping.Add("mcmdcounter", RegisterTypes.MircocommandsCounter);
+            _registerTypesMapping.Add("mcmdcounter", RegisterTypes.MicrocommandsCounter);
             _registerTypesMapping.Add("state", RegisterTypes.State);
 
             _watches = new List<string>(new string[] { "cc" });
