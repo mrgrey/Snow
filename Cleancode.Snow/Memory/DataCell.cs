@@ -30,12 +30,16 @@ namespace Cleancode.Snow.Memory
     /// <summary>
     /// ѕредставл€ет €чейку пам€ти заданного размера (<=16 бит)
     /// </summary>
-    public abstract class DataCell : Cleancode.Snow.Memory.IDataCell
+    public class DataCell : Cleancode.Snow.Memory.IDataCell
     {
         /// <summary>
         /// «начение €чейки
         /// </summary>
         ushort _data;
+        /// <summary>
+        /// «начение €чейки
+        /// </summary>
+        ushort _readonlyMask;
         /// <summary>
         /// ƒлина значени€ €чейки
         /// </summary>
@@ -49,7 +53,7 @@ namespace Cleancode.Snow.Memory
         /// <summary>
         ///  онструктор по умолчанию
         /// </summary>
-        protected DataCell()
+        private DataCell()
         { }
 
         /// <summary>
@@ -57,26 +61,44 @@ namespace Cleancode.Snow.Memory
         /// </summary>
         /// <param name="length">–азмер €чейки в битах (<=16)</param>
         /// <param name="id">»дентификатор €чейки</param>
-        protected DataCell(byte length, object id)
+        public  DataCell(byte length, object id)
         {
             //€чейка не может быть нулевого размера и больше чем 2 байта (16 бит)
             if (length == 0 || length > 16)
-                throw new ArgumentException("Unsupported cell length");
+                throw new ArgumentOutOfRangeException("Unsupported cell length");
             _data = 0;
             DataLength = length;
             Id = id;
+            _readonlyMask = 0;
+        }
+
+        public DataCell(byte length, object id, ushort defaultValue)
+            : this(length, id)
+        {
+            _data = (ushort)(defaultValue & Helper.GetMaskByLength(DataLength));
+        }
+
+        public DataCell(byte length, object id, ushort defaultValue, ushort readonlyMask)
+            : this(length, id, defaultValue)
+        {
+            _readonlyMask = readonlyMask;
         }
 
         /// <summary>
         /// ¬озвращает тип €чейки
         /// </summary>
-        public abstract DataCellType Type
-        { get;}
+        public virtual DataCellType Type
+        {
+            get
+            {
+                return DataCellType.Unknown;
+            }
+        }
 
         /// <summary>
         /// ¬озвращает и устанавливает данные €чейки с учетом длины и инициирует соответствующие событи€
         /// </summary>
-        public ushort Data
+        public virtual ushort Data
         {
             get
             {
@@ -86,6 +108,7 @@ namespace Cleancode.Snow.Memory
             {
                 //примен€ем к полученным данным маску, обреза€ не укладывающиес€ в текущий размер €чейки
                 ushort tempData = (ushort)(value & Helper.GetMaskByLength(DataLength));
+                tempData &= (ushort)(~_readonlyMask);
                 _data = tempData;
             }
         }
@@ -95,7 +118,7 @@ namespace Cleancode.Snow.Memory
         /// </summary>
         /// <param name="index">»ндекс бита в значении, который нужно вернуть</param>
         /// <returns>Ѕит с указанным индексом или false если индекс "вылетает" за границы €чейки, но лежит в диапазоне 2х байт</returns>
-        public bool this[int index]
+        public virtual bool this[int index]
         {
             get
             {
@@ -118,6 +141,8 @@ namespace Cleancode.Snow.Memory
                 if (index < 0 || index >= 16)
                     throw new ArgumentException("Unsupported bit index");
                 if (index >= DataLength)
+                    return;
+                if ((1 << index & _readonlyMask) != 0)
                     return;
                 //получаем текущее значение бита с указанным индексом 
                 //TODO и провоцируем вызов OnDataReaded!!!

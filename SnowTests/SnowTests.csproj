@@ -38,11 +38,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataCellTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MiscHelperTest.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="AuthoringTests.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Cleancode.Snow\Cleancode.Snow.csproj">

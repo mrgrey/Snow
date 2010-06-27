@@ -4,7 +4,8 @@ using System.Text;
 
 namespace Cleancode.Snow.Memory
 {
-    class StateRegister
+    class StateRegister : Register
     {
+
     }
 }

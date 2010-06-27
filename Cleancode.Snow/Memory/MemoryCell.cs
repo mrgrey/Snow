@@ -33,12 +33,6 @@ namespace Cleancode.Snow.Memory
         }
 
         /// <summary>
-        /// Конструктор по умолчанию
-        /// </summary>
-        private MemoryCell()
-        { }
-
-        /// <summary>
         /// Конструктор, создает ячейку памяти с заданными размером 
         /// </summary>
         /// <param name="length">Размер ячейки в битах (<=16)</param>

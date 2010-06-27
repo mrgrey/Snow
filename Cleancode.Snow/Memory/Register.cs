@@ -51,5 +51,6 @@ namespace Cleancode.Snow.Memory
         /// <param name="id">Идентификатор регистра</param>
         public Register(byte length, object id)
             : base(length, id) { }
+
     }
 }
