@@ -76,7 +76,6 @@ namespace Cleancode.Snow.Memory
         /// <summary>
         /// ¬озвращает и устанавливает данные €чейки с учетом длины и инициирует соответствующие событи€
         /// </summary>
-        [CLSCompliant(false)]
         public ushort Data
         {
             get

@@ -28,7 +28,6 @@ namespace Cleancode.Snow.Microcommands
     /// <summary>
     /// Описывает УМК(Управляющую Микрокоманду)
     /// </summary>
-    [CLSCompliant(false)]
     public class ControlMicroCommand : MicroCommand
     {
         /// <summary>

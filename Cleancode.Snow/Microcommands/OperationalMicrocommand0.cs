@@ -30,7 +30,6 @@ namespace Cleancode.Snow.Microcommands
     /// <summary>
     /// Описывает ОМК0(Операционную Микрокоманду 0)
     /// </summary>
-    [CLSCompliant(false)]
     public class OperationalMicrocommand0 : MicroCommand
     {
         /// <summary>

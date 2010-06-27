@@ -28,7 +28,6 @@ namespace Cleancode.Snow.Microcommands
     /// <summary>
     /// Базовый класс и фабрика микрокоманд
     /// </summary>
-    [CLSCompliant(false)]
     public abstract class MicroCommand
     {
         public readonly ushort Source;
@@ -43,7 +42,6 @@ namespace Cleancode.Snow.Microcommands
         /// </summary>
         /// <param name="source">Исходный код микрокоманды, по которому ведется конструирование</param>
         /// <returns>Сконструированную микрокоманду</returns>
-        [CLSCompliant(false)]
         public static MicroCommand Create(ushort source)
         {
             MicroCommand result = null;
