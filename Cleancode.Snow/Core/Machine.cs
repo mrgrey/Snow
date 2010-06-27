@@ -491,10 +491,9 @@ namespace Cleancode.Snow.Core
 
         public void ProcessMicroCycle()
         {
-            if (this.MicrocommandsCounter.Data == 1)
+            do{
                 this.ProcessCurrentMicrocommand();
-            while (this.MicrocommandsCounter.Data != 1)
-                this.ProcessCurrentMicrocommand();
+            }while(this.MicrocommandsCounter.Data != 1);
         }
     }
 }
