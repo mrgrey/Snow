@@ -202,7 +202,7 @@ namespace Cleancode.Snow.Core
             this.registers = new Dictionary<RegisterTypes, Cleancode.Snow.Memory.Register>();
 
             registersList.ForEach(
-                register => Registers.Add((RegisterTypes)register.Id, register)
+                register => this.registers.Add((RegisterTypes)register.Id, register)
             );
 
             IODevices = new IO.IODevice[3];
