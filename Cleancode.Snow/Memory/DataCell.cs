@@ -30,7 +30,7 @@ namespace Cleancode.Snow.Memory
     /// <summary>
     /// Представляет ячейку памяти заданного размера (<=16 бит)
     /// </summary>
-    public abstract class DataCell
+    public abstract class DataCell : Cleancode.Snow.Memory.IDataCell
     {
         /// <summary>
         /// Значение ячейки

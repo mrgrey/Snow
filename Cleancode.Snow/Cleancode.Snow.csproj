@@ -52,10 +52,15 @@
     <Compile Include="ALU\AluRightInputSource.cs" />
     <Compile Include="Core\Machine.cs" />
     <Compile Include="Core\RegistersTypes.cs" />
+    <Compile Include="IO\IDevice.cs" />
+    <Compile Include="IO\IInputDevice.cs" />
     <Compile Include="IO\IODevice.cs" />
     <Compile Include="IO\IOOperations.cs" />
+    <Compile Include="IO\IOutputDevice.cs" />
     <Compile Include="Memory\DataCell.cs" />
     <Compile Include="Memory\DataCellType.cs" />
+    <Compile Include="Memory\IDataCell.cs" />
+    <Compile Include="Memory\IRAM.cs" />
     <Compile Include="Memory\MemoryCell.cs" />
     <Compile Include="Memory\memoryDumpSchema.cs">
       <DependentUpon>memoryDumpSchema.xsd</DependentUpon>

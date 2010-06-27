@@ -26,7 +26,7 @@ using System.IO;
 namespace Cleancode.Snow.Memory
 {
     //Реализация RAM
-    public class RAM
+    public class RAM : Cleancode.Snow.Memory.IRAM
     {
         bool _needCellChangeInvoke = true;
         List<DataCell> _cells;

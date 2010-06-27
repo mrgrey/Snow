@@ -5,7 +5,7 @@ using Cleancode.Snow.Memory;
 
 namespace Cleancode.Snow.IO
 {
-    public class IODevice
+    public class IODevice : Cleancode.Snow.IO.IInputDevice, Cleancode.Snow.IO.IOutputDevice
     {
         private Core.Machine _machine;
         public bool _ready;
