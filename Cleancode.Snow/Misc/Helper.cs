@@ -38,22 +38,11 @@ namespace Cleancode.Snow.Misc
         /// <returns>Результат конкатенации</returns>
         public static string JoinNotEmptyStrings(params string[] strings)
         {
-            /*string separator = ", ";
+            string separator = ", ";
             return String.Join(
                 separator, 
-                strings.Select(s => s.Length != 0)
-            );*/
-            StringBuilder result = new StringBuilder();
-            for (int e = 0; e < strings.Length; e++)
-            {
-                if (strings[e].Length != 0)
-                {
-                    result.Append(strings[e]);
-                    if (e + 1 < strings.Length && strings[e + 1].Length != 0)
-                        result.Append(", ");
-                }
-            }
-            return result.ToString();
+                strings.Where(s => s.Length != 0).ToArray()
+            );
         }
 
         /// <summary>
@@ -61,9 +50,12 @@ namespace Cleancode.Snow.Misc
         /// </summary>
         /// <param name="length">Длина маски в битах</param>
         /// <returns>Вычисленная маска</returns>
-        public static int GetMaskByLength(byte length)
+        public static ushort GetMaskByLength(byte length)
         {
-            return (short)(((1 << (--length)) - 1) | (1 << length));
+            if (length > 16)
+                throw new ArgumentOutOfRangeException("length");
+
+            return (ushort)(((1 << (--length)) - 1) | (1 << length));
         }
 
         /// <summary>
@@ -87,14 +79,23 @@ namespace Cleancode.Snow.Misc
         /// <returns>Число соответствующее</returns>
         public static int ParseHexNumber(string inputString)
         {
-            if (inputString.StartsWith("0x"))
-                inputString = inputString.Substring(2);
-            return int.Parse(inputString, System.Globalization.NumberStyles.AllowHexSpecifier);
+            try
+            {
+                if (inputString.StartsWith("0x"))
+                    inputString = inputString.Substring(2);
+
+                return int.Parse(inputString, System.Globalization.NumberStyles.AllowHexSpecifier);
+            }
+            catch (FormatException)
+            {
+                throw new ArgumentException("inputString is not a correct hexadecimal string", "inputString"); 
+            }
         }
 
-        public static string FormatHexInt(int inputNumber, int width)
+        public static string FormatHexInt(uint inputNumber, int width)
         {
-            return String.Format(String.Format("{{0:X{0}}}", width), inputNumber);
+            var formatString = String.Format("{{0:X{0}}}", width);
+            return String.Format(formatString, inputNumber);
         }
     }
 }
